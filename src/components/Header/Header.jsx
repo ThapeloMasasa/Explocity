@@ -9,7 +9,7 @@ const Header = () => {
         <AppBar>
             <Toolbar className={classes.toolbar}>
                 <Typography variant="h5" className={classes.title}>
-                    ExploCity
+                    Hahlaula City Explorer
                 </Typography>
                 <Box display="flex">
                 <Typography variant="h6" className={classes.title}>
