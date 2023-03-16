@@ -6,7 +6,7 @@ import useStyles from './styles';
 const Header = () => {
     const classes = useStyles()
     return(
-        <AppBar>
+        <AppBar >
             <Toolbar className={classes.toolbar}>
                 <Typography variant="h5" className={classes.title}>
                     Hahlaula City Explorer

@@ -24,7 +24,7 @@ const PlaceDetails = ({place}) => {
                 </Box>
                 <Box display="flex" justifyContent="space-between">
                     <Typography variant="subtitle1">Ranking</Typography>
-                    <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
+                    <Typography gutterBottom variant="subtitle1" a>{place.ranking}</Typography>
                 </Box>
                 {
                     place?.awards?.map((award)=>(
@@ -48,6 +48,25 @@ const PlaceDetails = ({place}) => {
                         </Typography>
                     )
                 }
+                {
+                    place?.phone &&(
+                        <Typography gutterBottom variant="body2" color="textSecondary " className={classes.subtitle}>
+                            <PhoneIcon/> {place.address}
+                        </Typography>
+                    )
+                }
+                <CardActions>
+                    <Button size="small" color="primary" onClick={()=>{
+                        window.open(place.web_url, '_blank')
+                    }}>
+                        Trip Advisor
+                    </Button>
+                    <Button size="small" color="primary" onClick={()=>{
+                        window.open(place.website, '_blank')
+                    }}>
+                        website
+                    </Button>
+                </CardActions>
             </CardContent>
         </Card>
     );
