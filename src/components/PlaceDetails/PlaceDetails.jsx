@@ -6,8 +6,9 @@ import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 
 
-const PlaceDetails = ({place}) => {
+const PlaceDetails = ({place, selected, refProp}) => {
     const classes = useStyles()
+    if(selected) refProp?.current?.scrollIntoView({behavior: "smooth", block: "start"});
     return(
         <Card>
             <CardMedia
@@ -19,13 +20,14 @@ const PlaceDetails = ({place}) => {
             <CardContent>
                 <Typography gutterBottom variant="h5">{place.name}</Typography>
                 <Box display="flex" justifyContent="space-between">
-                    <Typography variant="subtitle1">Price</Typography>
-                    <Typography gutterBottom variant="subtitle1">{place.price_level}</Typography>
+                <Rating  size="small" value={Number(place.rating) } readOnly/>
+                    <Typography gutterBottom variant="subtitle1"> {place.num_reviews} reviews</Typography>
                 </Box>
                 <Box display="flex" justifyContent="space-between">
-                    <Typography variant="subtitle1">Ranking</Typography>
-                    <Typography gutterBottom variant="subtitle1" a>{place.ranking}</Typography>
+                    <Typography variant="subtitle1">Price</Typography>
+                    <Typography gutterBottom variant="subtitle1">{place.price}</Typography>
                 </Box>
+                
                 {
                     place?.awards?.map((award)=>(
                             <Box display="flex" justifyContent="space-between" alignItems="center">
@@ -42,7 +44,7 @@ const PlaceDetails = ({place}) => {
                     ))
                 }
                 {
-                    place?.address &&(
+                    place?.is_closed&&(
                         <Typography gutterBottom variant="body2" color="textSecondary " className={classes.subtitle}>
                             <LocationOnIcon/> {place.address}
                         </Typography>
